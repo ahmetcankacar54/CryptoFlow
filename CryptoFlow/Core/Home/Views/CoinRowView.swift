@@ -42,8 +42,20 @@ extension CoinRowView {
                 .foregroundColor(Color.theme.secondaryText)
                 .frame(minWidth: 30)
             
-            Circle()
-                .frame(width: 30, height: 30)
+            AsyncImage(url: URL(string: coin.image)) { phase in
+                if let image = phase.image {
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                } else if phase.error != nil {
+                    Circle()
+                        .frame(width: 30, height: 30)
+                } else {
+                    ProgressView()
+                }
+            }
             
             Text(coin.symbol.uppercased())
                 .font(.headline)
