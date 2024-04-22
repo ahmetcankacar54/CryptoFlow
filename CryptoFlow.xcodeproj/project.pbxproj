@@ -22,6 +22,7 @@
 		C587D1582BCC82EE004628AC /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C587D1572BCC82EE004628AC /* CoinRowView.swift */; };
 		C587D15A2BCC83C4004628AC /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C587D1592BCC83C4004628AC /* PreviewProvider.swift */; };
 		C587D15C2BCC882D004628AC /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = C587D15B2BCC882D004628AC /* Double.swift */; };
+		C58CB19A2BD5C257006CEB0A /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CB1992BD5C257006CEB0A /* NetworkingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		C587D1572BCC82EE004628AC /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		C587D1592BCC83C4004628AC /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		C587D15B2BCC882D004628AC /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		C58CB1992BD5C257006CEB0A /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,15 +137,16 @@
 		C52EE3262BC5D8D4000D246A /* CryptoFlow */ = {
 			isa = PBXGroup;
 			children = (
-				C56792832BD052AC00358359 /* Services */,
-				C52EE3272BC5D8D4000D246A /* CryptoFlowApp.swift */,
-				C5102C392BC737B5007730B7 /* Extensions */,
-				C587D1542BCC73EE004628AC /* Models */,
-				C5102C3C2BC73C85007730B7 /* Core */,
 				C52EE3292BC5D8D4000D246A /* ContentView.swift */,
+				C52EE3272BC5D8D4000D246A /* CryptoFlowApp.swift */,
 				C52EE32B2BC5D8D7000D246A /* Assets.xcassets */,
+				C5102C392BC737B5007730B7 /* Extensions */,
+				C5102C3C2BC73C85007730B7 /* Core */,
 				C52EE3322BC5D8D7000D246A /* CryptoFlow.xcdatamodeld */,
+				C587D1542BCC73EE004628AC /* Models */,
 				C52EE32D2BC5D8D7000D246A /* Preview Content */,
+				C56792832BD052AC00358359 /* Services */,
+				C58CB1982BD5C187006CEB0A /* Utilities */,
 			);
 			path = CryptoFlow;
 			sourceTree = "<group>";
@@ -170,6 +173,14 @@
 				C587D1552BCC740A004628AC /* CoinModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C58CB1982BD5C187006CEB0A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C58CB1992BD5C257006CEB0A /* NetworkingManager.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 				C52EE3282BC5D8D4000D246A /* CryptoFlowApp.swift in Sources */,
 				C587D15C2BCC882D004628AC /* Double.swift in Sources */,
 				C587D15A2BCC83C4004628AC /* PreviewProvider.swift in Sources */,
+				C58CB19A2BD5C257006CEB0A /* NetworkingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

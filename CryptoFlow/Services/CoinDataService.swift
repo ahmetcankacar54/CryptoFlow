@@ -14,6 +14,7 @@ class CoinDataService {
     
     @Published var allCoins: [CoinModel] = []
     var coinSubscription: AnyCancellable?
+    let manager = NetworkingManager.self
     
     init() {
         getCoins()
@@ -42,32 +43,18 @@ class CoinDataService {
           "x-cg-demo-api-key": "\(ProcessInfo.processInfo.environment["API_KEY"] ?? "")"
         ]
         
-        coinSubscription = URLSession.shared.dataTaskPublisher(for: request)
-            .subscribe(on: DispatchQueue.global(qos: .default))
-            .tryMap(handleOutput)
-            .receive(on: DispatchQueue.main)
+        
+        coinSubscription = manager.download(request: .urlRequest(request))
             .decode(type: [CoinModel].self, decoder: JSONDecoder())
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    print("Error Downloading Data! \(error)")
-                case .finished:
-                    break
-                }
-            } receiveValue: { [weak self] returnedCoinModels in
-                self?.allCoins = returnedCoinModels
+            .sink(receiveCompletion: manager.handleCompletion, receiveValue: { [weak self] returnedCoins in
+                self?.allCoins = returnedCoins
                 self?.coinSubscription?.cancel()
-            }
+            })
     }
     
-    private func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
-        
-        guard
-            let response = output.response as? HTTPURLResponse,
-              response.statusCode >= 200 && response.statusCode < 300 else {
-            throw URLError(.badServerResponse)
-        }
-        
-        return output.data
-    }
+    
+}
+
+private class GetCoinRequest {
+    
 }
