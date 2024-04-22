@@ -14,7 +14,6 @@ class CoinDataService {
     
     @Published var allCoins: [CoinModel] = []
     var coinSubscription: AnyCancellable?
-    let manager = NetworkingManager.self
     
     init() {
         getCoins()
@@ -44,9 +43,9 @@ class CoinDataService {
         ]
         
         
-        coinSubscription = manager.download(request: .urlRequest(request))
+        coinSubscription = NetworkingManager.download(request: .urlRequest(request))
             .decode(type: [CoinModel].self, decoder: JSONDecoder())
-            .sink(receiveCompletion: manager.handleCompletion, receiveValue: { [weak self] returnedCoins in
+            .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] returnedCoins in
                 self?.allCoins = returnedCoins
                 self?.coinSubscription?.cancel()
             })

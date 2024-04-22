@@ -34,7 +34,7 @@ class NetworkingManager {
     }
 
     
-    static func download(request: DownloadRequest) -> AnyPublisher<Data, Error> {
+    static func download(request: DownloadRequest) -> AnyPublisher<Data, Error> { 
         switch request {
             
         case let .url(url):
